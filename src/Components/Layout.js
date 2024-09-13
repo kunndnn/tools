@@ -1,4 +1,5 @@
 import { Outlet, Link } from "react-router-dom";
+import Footer from "./Footer";
 function Layout() {
   return (
     <>
@@ -13,9 +14,16 @@ function Layout() {
           <li>
             <Link to="/file-to-buffer">File to Buffer</Link>
           </li>
+          <li>
+            <Link to="/bar-code">Bar code generator</Link>
+          </li>
+          <li>
+            <Link to="/qr-code">QR code generator</Link>
+          </li>
         </ul>
       </nav>
       <Outlet />
+      <Footer /> {/* to show footer in all the pages */}
     </>
   );
 }
