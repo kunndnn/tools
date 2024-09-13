@@ -20,6 +20,9 @@ function Layout() {
           <li>
             <Link to="/qr-code">QR code generator</Link>
           </li>
+          <li>
+            <Link to="/text-to-speech">Text to speech</Link>
+          </li>
         </ul>
       </nav>
       <Outlet />
