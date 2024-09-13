@@ -1,0 +1,33 @@
+#loader {
+  display: none; /* Hide the loader by default */
+  position: fixed; /* Stay in the same position */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Dark BG with some transparency */
+  z-index: 9999; /* Make sure it covers other elements */
+  display: flex; /* Use Flexbox */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+}
+
+/* Spinner styles */
+.spinner {
+  border: 8px solid rgba(0, 0, 0, 0.1);
+  border-left: 8px solid #8bc7d0;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  animation: spin 1s linear infinite;
+}
+
+/* Animation for spinner */
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
