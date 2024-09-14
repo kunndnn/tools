@@ -6,6 +6,7 @@ import FileToBuffer from "./Components/FileToBuffer";
 import BarCodeGenerator from "./Components/BarCodeGenerator";
 import QRCodeGenerator from "./Components/QRCodeGenerator";
 import TextToSpeech from "./Components/TextToSpeech";
+import LiveCamera from "./Components/LiveCamera";
 function Router() {
   return (
     <BrowserRouter>
@@ -16,6 +17,7 @@ function Router() {
           <Route path="/bar-code" element={<BarCodeGenerator />} />
           <Route path="/qr-code" element={<QRCodeGenerator />} />
           <Route path="/text-to-speech" element={<TextToSpeech />} />
+          <Route path="/live-camera" element={<LiveCamera />} />
           <Route path="*" element={<NoPage />} />
         </Route>
       </Routes>

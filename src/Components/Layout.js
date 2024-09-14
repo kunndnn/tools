@@ -23,6 +23,9 @@ function Layout() {
           <li>
             <Link to="/text-to-speech">Text to speech</Link>
           </li>
+          <li>
+            <Link to="/live-camera">Live Camera</Link>
+          </li>
         </ul>
       </nav>
       <Outlet />
