@@ -1,1 +1,0 @@
-{"version":3,"file":"static/css/805.f720e8ef.chunk.css","mappings":"AAAA,OACE,gBACF,CACA,OACE,eACF","sources":["Styles/QRCodeGenerator.css"],"sourcesContent":["button {\r\n  margin-left: 20px;\r\n}\r\ncanvas {\r\n  margin-top: 20px;\r\n}\r\n"],"names":[],"sourceRoot":""}
