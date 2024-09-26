@@ -1,5 +1,6 @@
 import React, { useRef, useState } from "react";
 import JsBarcode from "jsbarcode";
+import "../Styles/BarCodeGenerator.css"; // Importing the CSS file
 
 const BarCodeGenerator = () => {
   const [inputText, setInputText] = useState(""); // Store input text
@@ -19,16 +20,19 @@ const BarCodeGenerator = () => {
   };
 
   return (
-    <div>
-      <h3>Barcode Generator</h3>
+    <div className="container">
+      <h3 className="heading">Barcode Generator</h3>
       <input
         type="text"
         value={inputText}
         onChange={(e) => setInputText(e.target.value)}
         placeholder="Enter text"
+        className="input"
       />
-      <button onClick={generateBarcode}>Generate Barcode</button>
-      <div>
+      <button className="button" onClick={generateBarcode}>
+        Generate Barcode
+      </button>
+      <div className="barcode-container">
         {/* This is where the barcode will be rendered */}
         <svg ref={barcodeRef}></svg>
       </div>

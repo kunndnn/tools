@@ -8,9 +8,9 @@ function Layout() {
           <li>
             <Link to="/">Home</Link>
           </li>
-          <li>
+          {/* <li>
             <Link to="/loader">Loader</Link>
-          </li>
+          </li> */}
           <li>
             <Link to="/file-to-buffer">File to Buffer</Link>
           </li>
@@ -25,6 +25,9 @@ function Layout() {
           </li>
           <li>
             <Link to="/live-camera">Live Camera</Link>
+          </li>
+          <li>
+            <Link to="/chat-bot">Chat Bot</Link>
           </li>
         </ul>
       </nav>

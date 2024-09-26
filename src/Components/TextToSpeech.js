@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import "../Styles/TextToSpeech.css"; // Importing the external CSS file
 
 const TextToSpeech = () => {
   const [textToRead, setTextToRead] = useState("Enter text here...");
@@ -50,21 +51,28 @@ const TextToSpeech = () => {
   };
 
   return (
-    <div>
+    <div className="container">
       <textarea
+        className="textarea"
         value={textToRead}
         onChange={(e) => setTextToRead(e.target.value)}
         rows="4"
         cols="50"
       />
-      <select value={selectedVoice} onChange={handleVoiceChange}>
+      <select
+        className="select"
+        value={selectedVoice}
+        onChange={handleVoiceChange}
+      >
         {voices.map((voice) => (
           <option key={voice.name} value={`${voice.name} (${voice.lang})`}>
             {voice.name} ({voice.lang})
           </option>
         ))}
       </select>
-      <button onClick={handleSpeak}>Speak</button>
+      <button className="button" onClick={handleSpeak}>
+        Speak
+      </button>
     </div>
   );
 };

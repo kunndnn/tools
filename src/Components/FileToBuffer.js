@@ -27,16 +27,60 @@ function FileToBuffer() {
 
     reader.readAsDataURL(file); // Read the file as Data URL (base64 encoded string)
   };
-  return (
-    <>
-      <input type="file" ref={fileInputRef} />
-      <br />
-      <br />
-      <button onClick={convertFile}>Convert to Base64</button>
 
-      <h2>Output</h2>
-      <textarea value={output} rows="10" cols="100" readOnly />
-    </>
+  // Inline styles for elements
+  const containerStyle = {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
+    height: "80vh", // Adjust height to fit within the viewport responsively
+    width: "90vw", // Ensure responsiveness for smaller devices
+    maxWidth: "600px", // Max width for larger screens
+    margin: "auto",
+    padding: "20px",
+    backgroundColor: "#f0f0f0",
+    borderRadius: "15px",
+    boxShadow: "10px 10px 30px rgba(0, 0, 0, 0.2)", // 3D shadow effect
+    transform: "rotateX(5deg) rotateY(5deg)", // Slight 3D tilt effect
+    perspective: "1000px", // Gives a 3D feel
+  };
+
+  const buttonStyle = {
+    padding: "10px 20px",
+    backgroundColor: "#4CAF50",
+    color: "white",
+    border: "none",
+    borderRadius: "5px",
+    cursor: "pointer",
+    margin: "10px",
+  };
+
+  const fileInputStyle = {
+    marginBottom: "20px",
+  };
+
+  const textAreaStyle = {
+    width: "100%",
+    padding: "10px",
+    fontSize: "16px",
+    borderRadius: "5px",
+  };
+
+  const headingStyle = {
+    margin: "20px 0",
+  };
+
+  return (
+    <div style={containerStyle}>
+      <input type="file" ref={fileInputRef} style={fileInputStyle} />
+      <button style={buttonStyle} onClick={convertFile}>
+        Convert to Base64
+      </button>
+
+      <h2 style={headingStyle}>Output</h2>
+      <textarea value={output} rows="10" style={textAreaStyle} readOnly />
+    </div>
   );
 }
 
