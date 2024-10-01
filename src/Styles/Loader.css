@@ -12,17 +12,20 @@
   align-items: center; /* Center vertically */
 }
 
-/* Spinner styles with hollow metallic effect */
+/* Spinner styles with knife-like metallic effect */
 .spinner {
-  border: 8px solid rgba(255, 255, 255, 0.2); /* Light metallic border */
-  border-left: 8px solid #c0c0c0; /* Silver tone */
-  border-top: 8px solid #d0d0d0; /* Lighter metallic tone for contrast */
+  border: 8px solid rgba(255, 255, 255, 0.1); /* Very light, reflective border */
+  border-left: 8px solid #b0bec5; /* Cool silver tone (knife blade-like) */
+  border-top: 8px solid #d1d8db; /* Lighter, sharper metallic edge */
+  border-right: 8px solid #9ea7ad; /* Darker metallic for contrast */
+  border-bottom: 8px solid #ced7da; /* Lighter sharp finish */
   border-radius: 50%;
   width: 60px;
   height: 60px;
   animation: spin 1s linear infinite;
-  box-shadow: 0px 0px 15px rgba(200, 200, 200, 0.6); /* Metallic glow effect */
-  background: transparent; /* Hollow center */
+  box-shadow: 0px 0px 20px rgba(150, 150, 150, 0.6); /* Sharper glow for a reflective look */
+  background: transparent; /* Hollow center for a sleek look */
+  filter: brightness(1.2); /* Increase the brightness to enhance the sharpness */
 }
 
 /* Animation for spinner */
