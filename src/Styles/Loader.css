@@ -12,20 +12,21 @@
   align-items: center; /* Center vertically */
 }
 
-/* Spinner styles with knife-like metallic effect */
+/* Spinner with knife-like portion */
 .spinner {
-  border: 8px solid rgba(255, 255, 255, 0.1); /* Very light, reflective border */
-  border-left: 8px solid #b0bec5; /* Cool silver tone (knife blade-like) */
-  border-top: 8px solid #d1d8db; /* Lighter, sharper metallic edge */
+  border: 8px solid rgba(255, 255, 255, 0.1); /* Light reflective border */
+  border-left: 8px solid #b0bec5; /* Cool silver tone */
+  border-top: 8px solid #d1d8db; /* Lighter metallic edge */
   border-right: 8px solid #9ea7ad; /* Darker metallic for contrast */
   border-bottom: 8px solid #ced7da; /* Lighter sharp finish */
   border-radius: 50%;
   width: 60px;
   height: 60px;
-  animation: spin 1s linear infinite;
-  box-shadow: 0px 0px 20px rgba(150, 150, 150, 0.6); /* Sharper glow for a reflective look */
-  background: transparent; /* Hollow center for a sleek look */
-  filter: brightness(1.2); /* Increase the brightness to enhance the sharpness */
+  animation: spin 1.5s linear infinite;
+  box-shadow: 0px 0px 20px rgba(150, 150, 150, 0.6); /* Metallic reflective glow */
+  background: transparent; /* Hollow center */
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%); /* Show part of the circle */
+  filter: brightness(1.2); /* Increase sharpness */
 }
 
 /* Animation for spinner */
