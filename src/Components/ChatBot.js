@@ -26,7 +26,7 @@ const generateResponse = async (prompt) => {
 };
 
 function ChatBot() {
-  const [loading, setLoading] = useState(true); // State management here
+  const [loading, setLoading] = useState(false); // State management here
   const [prompt, setPrompt] = useState("");
   const textAreaRef = useRef(null);
   const inputRef = useRef(null);
