@@ -12,19 +12,17 @@
   align-items: center; /* Center vertically */
 }
 
-/* Spinner styles with metallic effect */
+/* Spinner styles with hollow metallic effect */
 .spinner {
-  border: 8px solid rgba(255, 255, 255, 0.2); /* Lighter metallic border */
-  border-left: 8px solid #c0c0c0; /* Metallic silver */
-  border-right: 8px solid #b0b0b0; /* Darker silver for contrast */
-  border-top: 8px solid #a0a0a0; /* Variation of metallic tone */
-  border-bottom: 8px solid #d0d0d0; /* Lighter tone */
+  border: 8px solid rgba(255, 255, 255, 0.2); /* Light metallic border */
+  border-left: 8px solid #c0c0c0; /* Silver tone */
+  border-top: 8px solid #d0d0d0; /* Lighter metallic tone for contrast */
   border-radius: 50%;
   width: 60px;
   height: 60px;
   animation: spin 1s linear infinite;
   box-shadow: 0px 0px 15px rgba(200, 200, 200, 0.6); /* Metallic glow effect */
-  background: linear-gradient(145deg, #e0e0e0, #9a9a9a); /* Metallic gradient */
+  background: transparent; /* Hollow center */
 }
 
 /* Animation for spinner */
