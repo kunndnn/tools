@@ -6,7 +6,7 @@ import { ToastContainer, toast, Zoom } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const { REACT_APP_API_KEY: API_KEY } = process.env; // api key
-
+const { dismiss } = toast;
 // generate the response from generative AI
 const generateResponse = async (prompt) => {
   try {
@@ -18,6 +18,7 @@ const generateResponse = async (prompt) => {
     const text = response.text();
     return text;
   } catch (error) {
+    dismiss(); // Dismiss any existing toast notifications
     toast.error(`Some Error occured !!!`, {
       theme: "dark",
     });
@@ -46,6 +47,7 @@ function ChatBot() {
   // fetch & set result from AI
   const fetchResult = async () => {
     if (!prompt) {
+      dismiss(); // Dismiss any existing toast notifications
       toast.info("Please enter something", {
         position: "top-right",
         autoClose: 5000,
@@ -72,6 +74,7 @@ function ChatBot() {
 
     if (response) {
       navigator.clipboard.writeText(response);
+      dismiss(); // Dismiss any existing toast notifications
       toast.success("Text copied to clipboard", {
         position: "top-right",
         autoClose: 5000,
@@ -84,6 +87,7 @@ function ChatBot() {
         transition: Zoom,
       });
     } else {
+      dismiss(); // Dismiss any existing toast notifications
       toast.info(`Nothing to copy`, {
         theme: "dark",
       });
