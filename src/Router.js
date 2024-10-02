@@ -19,67 +19,67 @@ function Router() {
   return (
     <HashRouter>
       {/* <BrowserRouter> */}
-        <Routes>
-          <Route path="/" element={<Layout />}>
-            <Route
-              path="/loader"
-              element={
-                <Suspense fallback={<div>Loading...</div>}>
-                  <Loader />
-                </Suspense>
-              }
-            />
-            <Route
-              path="/file-to-buffer"
-              element={
-                <Suspense fallback={<div>Loading...</div>}>
-                  <FileToBuffer />
-                </Suspense>
-              }
-            />
-            <Route
-              path="/bar-code"
-              element={
-                <Suspense fallback={<div>Loading...</div>}>
-                  <BarCodeGenerator />
-                </Suspense>
-              }
-            />
-            <Route
-              path="/qr-code"
-              element={
-                <Suspense fallback={<div>Loading...</div>}>
-                  <QRCodeGenerator />
-                </Suspense>
-              }
-            />
-            <Route
-              path="/text-to-speech"
-              element={
-                <Suspense fallback={<div>Loading...</div>}>
-                  <TextToSpeech />
-                </Suspense>
-              }
-            />
-            <Route
-              path="/live-camera"
-              element={
-                <Suspense fallback={<div>Loading...</div>}>
-                  <LiveCamera />
-                </Suspense>
-              }
-            />
-            <Route
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route
+            path="/loader"
+            element={
+              <Suspense fallback={<div>Loading...</div>}>
+                <Loader />
+              </Suspense>
+            }
+          />
+          <Route
+            path="/file-to-buffer"
+            element={
+              <Suspense fallback={<div>Loading...</div>}>
+                <FileToBuffer />
+              </Suspense>
+            }
+          />
+          <Route
+            path="/bar-code"
+            element={
+              <Suspense fallback={<div>Loading...</div>}>
+                <BarCodeGenerator />
+              </Suspense>
+            }
+          />
+          <Route
+            path="/qr-code"
+            element={
+              <Suspense fallback={<div>Loading...</div>}>
+                <QRCodeGenerator />
+              </Suspense>
+            }
+          />
+          <Route
+            path="/text-to-speech"
+            element={
+              <Suspense fallback={<div>Loading...</div>}>
+                <TextToSpeech />
+              </Suspense>
+            }
+          />
+          <Route
+            path="/live-camera"
+            element={
+              <Suspense fallback={<div>Loading...</div>}>
+                <LiveCamera />
+              </Suspense>
+            }
+          />
+          {/* <Route
               path="/chat-bot"
               element={
                 <Suspense fallback={<div>Loading...</div>}>
                   <ChatBot />
                 </Suspense>
               }
-            />
-            <Route path="*" element={<NoPage />} />
-          </Route>
-        </Routes>
+            /> */}
+          <Route path="*" element={<NoPage />} />
+        </Route>
+      </Routes>
       {/* </BrowserRouter> */}
     </HashRouter>
   );

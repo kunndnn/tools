@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "../Styles/TextToSpeech.css"; // Importing the external CSS file
 
 const TextToSpeech = () => {
-  const [textToRead, setTextToRead] = useState("Enter text here...");
+  const [textToRead, setTextToRead] = useState("");
   const [voices, setVoices] = useState([]);
   const [selectedVoice, setSelectedVoice] = useState("");
 
@@ -56,6 +56,7 @@ const TextToSpeech = () => {
         className="textarea"
         value={textToRead}
         onChange={(e) => setTextToRead(e.target.value)}
+        placeholder="Enter text here..."
         rows="4"
         cols="50"
       />

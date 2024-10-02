@@ -26,9 +26,9 @@ function Layout() {
           <li>
             <Link to="/live-camera">Live Camera</Link>
           </li>
-          <li>
+          {/* <li>
             <Link to="/chat-bot">Chat Bot</Link>
-          </li>
+          </li> */}
         </ul>
       </nav>
       <Outlet />
