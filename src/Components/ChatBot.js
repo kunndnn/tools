@@ -4,9 +4,9 @@ import { GoogleGenerativeAI } from "@google/generative-ai";
 import "../Styles/ChatBot.css";
 import { ToastContainer, toast, Zoom } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+const { dismiss } = toast;
 
 const { REACT_APP_API_KEY: API_KEY } = process.env; // api key
-const { dismiss } = toast;
 // generate the response from generative AI
 const generateResponse = async (prompt) => {
   try {

@@ -1,20 +1,31 @@
 import React, { useState, useRef } from "react";
-
+import Loader from "./Loader";
+import { ToastContainer, toast, Zoom } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import CopyToClipBoard from "./Common/CopyToClipBoard";
 function FileToBuffer() {
+  const [loading, setLoading] = useState(false);
   const [output, setOutput] = useState(""); // State to hold the output
   const fileInputRef = useRef(null); // Reference to file input
+  const { dismiss } = toast;
+
+  const toggleLoader = () => setLoading((prevLoading) => !prevLoading); // Toggle the loading state
 
   const convertFile = () => {
     const file = fileInputRef.current.files[0]; // Get the file from the input
 
     if (!file) {
-      alert("Please choose a file.");
+      dismiss(); // Dismiss any existing toast notifications
+      toast.error(`Please choose a file !!!`, {
+        theme: "dark",
+      });
       return;
     }
 
     const reader = new FileReader();
 
     reader.onload = function (e) {
+      toggleLoader();
       const base64String = e.target.result.split(",")[1]; // Extract base64 string
       const mimeType = file.type || "application/octet-stream"; // Default to binary if empty
 
@@ -26,6 +37,7 @@ function FileToBuffer() {
     };
 
     reader.readAsDataURL(file); // Read the file as Data URL (base64 encoded string)
+    toggleLoader();
   };
 
   // Inline styles for elements
@@ -72,15 +84,32 @@ function FileToBuffer() {
   };
 
   return (
-    <div style={containerStyle}>
-      <input type="file" ref={fileInputRef} style={fileInputStyle} />
-      <button style={buttonStyle} onClick={convertFile}>
-        Convert to Base64
-      </button>
+    <>
+      <div style={containerStyle}>
+        <input type="file" ref={fileInputRef} style={fileInputStyle} />
+        <button style={buttonStyle} onClick={convertFile}>
+          Convert to Base64
+        </button>
 
-      <h2 style={headingStyle}>Output</h2>
-      <textarea value={output} rows="10" style={textAreaStyle} readOnly />
-    </div>
+        <h2 style={headingStyle}>Output</h2>
+        <textarea value={output} rows="10" style={textAreaStyle} readOnly />
+        <CopyToClipBoard textToCopy={output} style={buttonStyle} />
+      </div>
+      <Loader loading={loading} />
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+        transition={Zoom}
+      />
+    </>
   );
 }
 
