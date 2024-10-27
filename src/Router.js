@@ -14,7 +14,9 @@ const QRCodeGenerator = React.lazy(() =>
 const TextToSpeech = React.lazy(() => import("./Components/TextToSpeech"));
 const LiveCamera = React.lazy(() => import("./Components/LiveCamera"));
 const ChatBot = React.lazy(() => import("./Components/ChatBot"));
-
+const DropzoneComponent = React.lazy(() =>
+  import("./Components/DropzoneComponent")
+);
 function Router() {
   return (
     <HashRouter>
@@ -66,6 +68,14 @@ function Router() {
             element={
               <Suspense fallback={<div>Loading...</div>}>
                 <LiveCamera />
+              </Suspense>
+            }
+          />
+          <Route
+            path="/drop-zone"
+            element={
+              <Suspense fallback={<div>Loading...</div>}>
+                <DropzoneComponent />
               </Suspense>
             }
           />

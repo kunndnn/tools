@@ -1,0 +1,69 @@
+.container{
+    /* Center the Dropzone component on the page */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Full viewport height */
+    background-color: #f0f0f0; /* Optional: set a background color */
+    margin: 0;
+    padding: 0;
+  
+}
+
+div>img{
+    cursor:auto
+}
+
+.dropzone {
+    border: 2px dashed #007bff;
+    padding: 20px;
+    text-align: center;
+    color: #007bff;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center the contents horizontally */
+    justify-content: flex-start; /* Align items at the start */
+    overflow: hidden; /* Hide overflow outside the dropzone */
+    max-width: 90%; /* Set a maximum width for the dropzone */
+    margin: 0 auto; /* Center the dropzone in the viewport */
+  }
+  
+  .image-preview-container {
+    display: flex;
+    flex-wrap: wrap; /* Allow wrapping for image previews */
+    margin-top: 10px;
+    width: 100%; /* Full width of the dropzone */
+    padding: 5px; /* Add padding for spacing */
+    box-sizing: border-box; /* Ensures padding doesn’t overflow */
+  }
+  
+  .image-preview {
+    position: relative;
+    margin: 5px; /* Space between previews */
+    width: 80px; /* Fixed width for each image preview */
+    height: 80px; /* Fixed height for each image preview */
+    overflow: hidden;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+  }
+  
+  .image-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Maintain aspect ratio */
+  }
+  
+  .delete-button {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+  }
+  

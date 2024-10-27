@@ -26,6 +26,9 @@ function Layout() {
           <li>
             <Link to="/live-camera">Live Camera</Link>
           </li>
+          <li>
+            <Link to="/drop-zone">Drop Zone</Link>
+          </li>
           {/* <li>
             <Link to="/chat-bot">Chat Bot</Link>
           </li> */}

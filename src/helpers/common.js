@@ -94,7 +94,7 @@ export const toQueryString = (obj) =>
     .map((key) => `${encodeURIComponent(key)}=${encodeURIComponent(obj[key])}`)
     .join("&");
 
-export const dealy = (func, ms) => setTimeout(func, ms);
+export const delay = (func, ms) => setTimeout(func, ms);
 
 // console.log(this.areAnagrams("hii", "iih"));
 
