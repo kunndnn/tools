@@ -29,6 +29,9 @@ function Layout() {
           <li>
             <Link to="/drop-zone">Drop Zone</Link>
           </li>
+          <li>
+            <Link to="/weather">Weather</Link>
+          </li>
           {/* <li>
             <Link to="/chat-bot">Chat Bot</Link>
           </li> */}

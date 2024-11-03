@@ -1,0 +1,127 @@
+ 
+  .card {
+    display: flex;
+    flex-direction: column; /* Stack elements vertically */
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+  }
+  
+  .wrap {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  
+  .search {
+    display: flex;
+  }
+  
+  .searchTerm {
+    width: 300px;
+    padding: 10px;
+    border: 2px solid #00adb5;
+    border-radius: 5px 0 0 5px;
+    outline: none;
+    color: #333;
+  }
+  
+  .searchButton {
+    padding: 10px;
+    border: none;
+    background-color: #00adb5;
+    color: white;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+  }
+  
+ .widget {
+  background:#b1d8ff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  width: 300px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
+}
+
+.widget:hover {
+  transform: translateY(-2px) scale(1.05); /* Moves up slightly and enlarges */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3), 0 4px 8px rgba(0, 0, 0, 0.2); /* Stronger shadow for 3D effect */
+}
+
+  
+  .weatherIcon {
+    font-size: 50px;
+    color: #333;
+  }
+  
+  .weatherInfo {
+    margin: 10px 0;
+  }
+  
+  .temperature span {
+    font-size: 32px;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .description {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+  }
+  
+  .weatherCondition {
+    font-size: 18px;
+    font-weight: bold;
+    color: #555;
+  }
+  
+  .place {
+    font-size: 14px;
+    color: #888;
+  }
+  
+  .date {
+    font-size: 14px;
+    color: #00adb5;
+    margin-top: 10px;
+  }
+  
+  .extra-temp {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+    border-top: 1px solid #eee;
+    padding-top: 15px;
+    color: #555;
+  }
+  
+  .temp-info-minmax {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+  
+  .two-sided-section {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    color: #333;
+  }
+  
+  .two-sided-section p {
+    margin: 5px 0;
+  }
+  
+  .extra-info-leftside {
+    text-align: center;
+    font-size: 12px;
+    color: #888;
+  }
+  
+  .two-sided-section{
+    margin: 5px;
+  }

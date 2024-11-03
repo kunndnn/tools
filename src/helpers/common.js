@@ -1,7 +1,7 @@
-import { genSalt } from "bcrypt";
-import crypto from "crypto";
+// import { genSalt } from "bcryptjs";
+// import crypto from "crypto";
 
-export const randomString = async (salt = 12) => await genSalt(salt);
+// export const randomString = async (salt = 12) => await genSalt(salt);
 // const string = await randomString();
 
 export const reverseString = (str) => str.split("").reverse().join("");
@@ -54,7 +54,7 @@ export const flatArray = (arr) => arr.flat(Infinity);
 export const sortByKey = (array, key) =>
   array.sort((a, b) => (a[key] > b[key] ? a : -1));
 
-export const isEven = (num) => num % 2 == 0;
+export const isEven = (num) => num % 2 === 0;
 
 export const genereteUUID = () =>
   "xxxxxxxxxxxx4xxxyxxxxxxxxxxxxxxx".replace(/[xy]/g, (c) =>
@@ -77,12 +77,12 @@ export const arrayToObject = (arr, key) =>
   }, {});
 
 export const countOccurences = (arr) =>
-  arr.reduce((arr, item) => {
+  arr.reduce((acc, item) => {
     acc[item] = (acc[item] || 0) + 1;
     return acc;
   }, {});
 
-export const removeItem = (arr, item) => arrlfilter((i) => i !== item);
+export const removeItem = (arr, item) => arr((i) => i !== item);
 
 export const areAnagrams = (str1, str2) => {
   const normalize = (str) => str.split("").sort().join("");
@@ -95,6 +95,11 @@ export const toQueryString = (obj) =>
     .join("&");
 
 export const delay = (func, ms) => setTimeout(func, ms);
+
+export const formatTimestampToLocalDateTime = (timestamp) =>
+  new Date(timestamp * 1000).toLocaleString();
+
+// Convert the timestamp to milliseconds
 
 // console.log(this.areAnagrams("hii", "iih"));
 

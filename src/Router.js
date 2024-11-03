@@ -17,6 +17,8 @@ const ChatBot = React.lazy(() => import("./Components/ChatBot"));
 const DropzoneComponent = React.lazy(() =>
   import("./Components/DropzoneComponent")
 );
+
+const Weather = React.lazy(() => import("./Components/Weather/Weather"));
 function Router() {
   return (
     <HashRouter>
@@ -76,6 +78,14 @@ function Router() {
             element={
               <Suspense fallback={<div>Loading...</div>}>
                 <DropzoneComponent />
+              </Suspense>
+            }
+          />
+          <Route
+            path="/weather"
+            element={
+              <Suspense fallback={<div>Loading...</div>}>
+                <Weather />
               </Suspense>
             }
           />
