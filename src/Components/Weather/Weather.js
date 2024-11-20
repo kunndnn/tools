@@ -13,7 +13,6 @@ const Weather = () => {
       const response = await fetch(url);
       const data = await response.json();
       setCity(data.name); // Set city name from the response
-      console.log({ city });
     } catch (error) {
       console.error("Error fetching city name:", error);
     }
@@ -46,6 +45,11 @@ const Weather = () => {
     }
   };
 
+  const handleKeyPress = (event) => {
+    if (event.key === "Enter") {
+      getWeatherInfo();
+    }
+  };
   useEffect(() => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
@@ -73,6 +77,7 @@ const Weather = () => {
               id="search"
               value={searchValue}
               onChange={(e) => setSearchValue(e.target.value)}
+              onKeyDown={handleKeyPress}
               className="searchTerm"
             />
 

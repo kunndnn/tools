@@ -3,6 +3,7 @@ import Layout from "./Components/Layout";
 import NoPage from "./Components/NoPage";
 import React, { Suspense } from "react";
 
+const Loading = () => <div>Loading ...</div>;
 const Loader = React.lazy(() => import("./Components/Loader"));
 const FileToBuffer = React.lazy(() => import("./Components/FileToBuffer"));
 const BarCodeGenerator = React.lazy(() =>
@@ -19,6 +20,7 @@ const DropzoneComponent = React.lazy(() =>
 );
 
 const Weather = React.lazy(() => import("./Components/Weather/Weather"));
+const ImageConverter = React.lazy(() => import("./Components/ImageConverter"));
 function Router() {
   return (
     <HashRouter>
@@ -28,7 +30,7 @@ function Router() {
           <Route
             path="/loader"
             element={
-              <Suspense fallback={<div>Loading...</div>}>
+              <Suspense fallback={<Loading />}>
                 <Loader />
               </Suspense>
             }
@@ -36,7 +38,7 @@ function Router() {
           <Route
             path="/file-to-buffer"
             element={
-              <Suspense fallback={<div>Loading...</div>}>
+              <Suspense fallback={<Loading />}>
                 <FileToBuffer />
               </Suspense>
             }
@@ -44,7 +46,7 @@ function Router() {
           <Route
             path="/bar-code"
             element={
-              <Suspense fallback={<div>Loading...</div>}>
+              <Suspense fallback={<Loading />}>
                 <BarCodeGenerator />
               </Suspense>
             }
@@ -52,7 +54,7 @@ function Router() {
           <Route
             path="/qr-code"
             element={
-              <Suspense fallback={<div>Loading...</div>}>
+              <Suspense fallback={<Loading />}>
                 <QRCodeGenerator />
               </Suspense>
             }
@@ -60,7 +62,7 @@ function Router() {
           <Route
             path="/text-to-speech"
             element={
-              <Suspense fallback={<div>Loading...</div>}>
+              <Suspense fallback={<Loading />}>
                 <TextToSpeech />
               </Suspense>
             }
@@ -68,7 +70,7 @@ function Router() {
           <Route
             path="/live-camera"
             element={
-              <Suspense fallback={<div>Loading...</div>}>
+              <Suspense fallback={<Loading />}>
                 <LiveCamera />
               </Suspense>
             }
@@ -76,7 +78,7 @@ function Router() {
           <Route
             path="/drop-zone"
             element={
-              <Suspense fallback={<div>Loading...</div>}>
+              <Suspense fallback={<Loading />}>
                 <DropzoneComponent />
               </Suspense>
             }
@@ -84,15 +86,23 @@ function Router() {
           <Route
             path="/weather"
             element={
-              <Suspense fallback={<div>Loading...</div>}>
+              <Suspense fallback={<Loading />}>
                 <Weather />
+              </Suspense>
+            }
+          />
+          <Route
+            path="/image-converter"
+            element={
+              <Suspense fallback={<Loading />}>
+                <ImageConverter />
               </Suspense>
             }
           />
           {/* <Route
               path="/chat-bot"
               element={
-                <Suspense fallback={<div>Loading...</div>}>
+                <Suspense fallback={<Loading/>}>
                   <ChatBot />
                 </Suspense>
               }
