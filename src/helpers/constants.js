@@ -35,6 +35,10 @@ const Links = [
     list: "/image-converter",
     name: "Image converter",
   },
+  {
+    list: "/image-enhancer",
+    name: "Image Enhancer",
+  },
 ]; // routers
 
 export { Links };

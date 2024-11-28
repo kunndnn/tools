@@ -1,67 +1,101 @@
 import React, { useState } from "react";
-import "../Styles/ImageConverter.css"; // import external CSS
+import JSZip from "jszip";
+import { saveAs } from "file-saver";
+import "../Styles/ImageConverter.css";
 
 function ImageConverter() {
-  const [imageSrc, setImageSrc] = useState(null);
-  const [uploadedFormat, setUploadedFormat] = useState(null);
+  const [images, setImages] = useState([]);
   const [selectedFormat, setSelectedFormat] = useState("jpeg");
-  const [convertedImage, setConvertedImage] = useState(null);
 
   const supportedFormats = [
-    "jpeg", // JPEG format
-    "png", // PNG format
-    "gif", // GIF format
-    "webp", // WebP format
-    "bmp", // BMP format
-    "tiff", // TIFF format
-    "ico", // ICO format
-    "svg", // SVG format
-    "heif", // HEIF format
-    "heic", // HEIC format
-    "apng", // APNG format
-    "raw", // RAW format (varies by camera)
-    "jp2", // JPEG 2000 format
-    "tga", // TGA format
-    "xbm", // XBM format
+    "jpeg",
+    "png",
+    "gif",
+    "webp",
+    "bmp",
+    "tiff",
+    "ico",
+    "svg",
+    "heif",
+    "heic",
+    "apng",
+    "raw",
+    "jp2",
+    "tga",
+    "xbm",
   ];
 
   const handleImageUpload = (event) => {
-    const file = event.target.files[0];
-    if (!file || !file.type.startsWith("image/")) {
-      alert("Please upload a valid image file!");
-      setImageSrc(null);
-      setUploadedFormat(null);
-      setConvertedImage(null);
+    const files = Array.from(event.target.files);
+    const validImages = files.filter((file) => file.type.startsWith("image/"));
+
+    if (validImages.length === 0) {
+      alert("Please upload valid image files!");
       return;
     }
 
-    const format = file.type.split("/")[1];
-    const reader = new FileReader();
-    reader.onload = (e) => {
-      setImageSrc(e.target.result);
-      setUploadedFormat(format);
-      setConvertedImage(null);
-    };
-    reader.readAsDataURL(file);
+    const newImages = validImages.map((file) => {
+      const format = file.type.split("/")[1];
+      const reader = new FileReader();
+      const image = {
+        src: null,
+        uploadedFormat: format,
+        converted: null,
+        name: file.name,
+      };
+
+      reader.onload = (e) => {
+        image.src = e.target.result;
+        setImages((prevImages) => [...prevImages, image]);
+      };
+      reader.readAsDataURL(file);
+
+      return image;
+    });
   };
 
-  const convertImage = () => {
-    if (!imageSrc || !uploadedFormat || !selectedFormat) return;
+  const convertAllImages = () => {
+    if (images.length === 0) return;
 
-    const canvas = document.createElement("canvas");
-    const img = new Image();
+    const updatedImages = images.map((image) => {
+      if (!image.src || !selectedFormat) return image;
 
-    img.onload = () => {
-      canvas.width = img.width;
-      canvas.height = img.height;
-      const ctx = canvas.getContext("2d");
-      ctx.drawImage(img, 0, 0);
+      const canvas = document.createElement("canvas");
+      const img = new Image();
 
-      const newImage = canvas.toDataURL(`image/${selectedFormat}`);
-      setConvertedImage(newImage);
-    };
+      img.onload = () => {
+        canvas.width = img.width;
+        canvas.height = img.height;
+        const ctx = canvas.getContext("2d");
+        ctx.drawImage(img, 0, 0);
 
-    img.src = imageSrc;
+        const newImage = canvas.toDataURL(`image/${selectedFormat}`);
+        image.converted = newImage;
+      };
+
+      img.src = image.src;
+      return image;
+    });
+
+    setImages(updatedImages);
+  };
+
+  const downloadAll = async () => {
+    if (images.some((image) => !image.converted)) {
+      alert("Please convert all images first!");
+      return;
+    }
+
+    const zip = new JSZip();
+
+    images.forEach((image) => {
+      const base64Data = image.converted.split(",")[1];
+      const fileName = `${image.name.split(".")[0]}.${selectedFormat}`;
+      zip.file(fileName, base64Data, { base64: true });
+    });
+
+    const zipBlob = await zip.generateAsync({ type: "blob" });
+    saveAs(zipBlob, "converted-images.zip");
   };
 
   return (
@@ -73,54 +107,54 @@ function ImageConverter() {
           type="file"
           accept="image/*"
           onChange={handleImageUpload}
+          multiple
           id="file-upload"
           className="file-input"
         />
         <label htmlFor="file-upload" className="file-input-label">
-          Choose Image
+          Choose Images
         </label>
-        {imageSrc && (
-          <img src={imageSrc} alt="Uploaded" className="image-preview" />
-        )}
       </div>
 
-      {imageSrc && (
-        <div className="convert-section">
-          <select
-            value={selectedFormat}
-            onChange={(e) => setSelectedFormat(e.target.value)}
-            className="format-select"
-          >
-            {supportedFormats
-              .filter((format) => format !== uploadedFormat)
-              .map((format) => (
+      {images.length > 0 && (
+        <>
+          <div className="convert-all-section">
+            <select
+              value={selectedFormat}
+              onChange={(e) => setSelectedFormat(e.target.value)}
+              className="format-select"
+            >
+              {supportedFormats.map((format) => (
                 <option key={format} value={format}>
                   {format.toUpperCase()}
                 </option>
               ))}
-          </select>
-          <button onClick={convertImage} className="convert-button">
-            Convert
-          </button>
-        </div>
-      )}
+            </select>
+            <button onClick={convertAllImages} className="convert-button">
+              Convert
+            </button>
+            {images.every((image) => image.converted) && (
+              <button onClick={downloadAll} className="download-button">
+                Download All
+              </button>
+            )}
+          </div>
 
-      {convertedImage && (
-        <div className="download-section">
-          <h3>Converted Image:</h3>
-          <img
-            src={convertedImage}
-            alt={`Converted to ${selectedFormat}`}
-            className="converted-image"
-          />
-          <a
-            href={convertedImage}
-            download={`converted-image.${selectedFormat}`}
-            className="download-button"
-          >
-            Download as .{selectedFormat}
-          </a>
-        </div>
+          <div className="images-container">
+            {images.map((image, index) => (
+              <div key={index} className="image-card">
+                <img
+                  src={image.src}
+                  alt={`Uploaded ${index + 1}`}
+                  className="image-preview"
+                />
+                {image.converted && (
+                  <p>Converted to {selectedFormat.toUpperCase()}</p>
+                )}
+              </div>
+            ))}
+          </div>
+        </>
       )}
     </div>
   );

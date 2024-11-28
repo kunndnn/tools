@@ -1,25 +1,20 @@
 import { HashRouter, BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "./Components/Layout";
 import NoPage from "./Components/NoPage";
-import React, { Suspense } from "react";
+import React, { Suspense, lazy } from "react";
 
 const Loading = () => <div>Loading ...</div>;
-const Loader = React.lazy(() => import("./Components/Loader"));
-const FileToBuffer = React.lazy(() => import("./Components/FileToBuffer"));
-const BarCodeGenerator = React.lazy(() =>
-  import("./Components/BarCodeGenerator")
-);
-const QRCodeGenerator = React.lazy(() =>
-  import("./Components/QRCodeGenerator")
-);
-const TextToSpeech = React.lazy(() => import("./Components/TextToSpeech"));
-const LiveCamera = React.lazy(() => import("./Components/LiveCamera"));
-const ChatBot = React.lazy(() => import("./Components/ChatBot"));
-const DropzoneComponent = React.lazy(() =>
-  import("./Components/DropzoneComponent")
-);
-const Weather = React.lazy(() => import("./Components/Weather/Weather"));
-const ImageConverter = React.lazy(() => import("./Components/ImageConverter"));
+const Loader = lazy(() => import("./Components/Loader"));
+const FileToBuffer = lazy(() => import("./Components/FileToBuffer"));
+const BarCodeGenerator = lazy(() => import("./Components/BarCodeGenerator"));
+const QRCodeGenerator = lazy(() => import("./Components/QRCodeGenerator"));
+const TextToSpeech = lazy(() => import("./Components/TextToSpeech"));
+const LiveCamera = lazy(() => import("./Components/LiveCamera"));
+const ChatBot = lazy(() => import("./Components/ChatBot"));
+const DropzoneComponent = lazy(() => import("./Components/DropzoneComponent"));
+const Weather = lazy(() => import("./Components/Weather/Weather"));
+const ImageConverter = lazy(() => import("./Components/ImageConverter"));
+const ImageEnhancer = lazy(() => import("./Components/ImageEnhancer"));
 
 const routesArray = [
   {
@@ -58,6 +53,10 @@ const routesArray = [
     path: "/image-converter",
     component: <ImageConverter />,
   },
+  {
+    path: "/image-enhancer",
+    component: <ImageEnhancer />,
+  },
 ];
 
 const routes = routesArray.map(({ path, component }) => (
@@ -72,6 +71,7 @@ function Router() {
       {/* <BrowserRouter> */}
       <Routes>
         <Route path="/" element={<Layout />}>
+          {/* all the routes  */}
           {routes}
           {/* <Route
               path="/chat-bot"
