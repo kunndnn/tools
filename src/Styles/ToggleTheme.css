@@ -1,0 +1,63 @@
+.theme-toggle-button {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 30px;
+  background: var(--button-bg, #ccc);
+  border-radius: 30px;
+  border: 2px solid var(--button-border, #ccc);
+  cursor: pointer;
+  overflow: hidden;
+  transition: background 0.3s ease;
+}
+
+.theme-toggle-button::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 5%;
+  transform: translateY(-50%);
+  width: 25px;
+  height: 25px;
+  background: var(--toggle-color, white);
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+}
+
+.theme-toggle-button.active {
+  background: var(--button-bg-active, #0056b3);
+  border-color: var(--button-border-active, #0056b3);
+}
+
+.theme-toggle-button.active::before {
+  left: calc(100% - 30px);
+  background: var(--toggle-color-active, white);
+}
+
+.theme-toggle-button img {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  transition: opacity 0.3s ease;
+}
+
+.theme-toggle-button .sun-icon {
+  left: 10px;
+  opacity: 1;
+}
+
+.theme-toggle-button .moon-icon {
+  right: 10px;
+  opacity: 0;
+}
+
+.theme-toggle-button.active .sun-icon {
+  opacity: 0;
+}
+
+.theme-toggle-button.active .moon-icon {
+  opacity: 1;
+}

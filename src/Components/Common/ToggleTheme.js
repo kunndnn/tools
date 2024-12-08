@@ -1,14 +1,21 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import { ThemeContext } from "./ThemeContext";
+import "../../Styles/ToggleTheme.css";
+import SunIcon from "../../assets/icons/sun.svg"; // Add the sun icon image
+import MoonIcon from "../../assets/icons/moon.svg"; // Add the moon icon image
 
 export const ToggleTheme = () => {
   const { theme, toggleTheme } = useContext(ThemeContext);
 
   return (
     <div>
-      <button style={{ backgroundColor: "#0056b3",padding:"10px", color:'white' }} onClick={toggleTheme}>
-        {theme === "light" ? "Switch to Dark Mode" : "Switch to Light Mode"}
-      </button>
+      <div
+        className={`theme-toggle-button ${theme === "dark" ? "active" : ""}`}
+        onClick={toggleTheme}
+      >
+        <img src={SunIcon} alt="Sun" className="sun-icon" />
+        <img src={MoonIcon} alt="Moon" className="moon-icon" />
+      </div>
     </div>
   );
 };

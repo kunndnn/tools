@@ -31,7 +31,7 @@ body.dark {
   background-color: var(--background-color);
   color: var(--text-color);
   & .container {
-    background-color: rgb(67, 154, 151);
+    background-color: #7fbcee;
 }
 }
 
