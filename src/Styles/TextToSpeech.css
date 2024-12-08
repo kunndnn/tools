@@ -4,7 +4,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100vh; /* Center vertically within the viewport */
+    height: 50vh; /* Center vertically within the viewport */
     width: 100%; /* Full width */
     max-width: 600px;
     margin: auto;
@@ -12,6 +12,7 @@
     padding: 20px;
     background-color: #ccd1cc;
     border-radius: 15px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
   }
   
   /* Textarea styles for input */

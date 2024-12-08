@@ -1,4 +1,5 @@
-import { HashRouter, BrowserRouter, Routes, Route } from "react-router-dom";
+// import {  BrowserRouter, Routes, Route } from "react-router-dom";
+import { HashRouter, Routes, Route } from "react-router-dom";
 import Layout from "./Components/Layout";
 import NoPage from "./Components/NoPage";
 import React, { Suspense, lazy } from "react";
@@ -10,11 +11,11 @@ const BarCodeGenerator = lazy(() => import("./Components/BarCodeGenerator"));
 const QRCodeGenerator = lazy(() => import("./Components/QRCodeGenerator"));
 const TextToSpeech = lazy(() => import("./Components/TextToSpeech"));
 const LiveCamera = lazy(() => import("./Components/LiveCamera"));
-const ChatBot = lazy(() => import("./Components/ChatBot"));
+// const ChatBot = lazy(() => import("./Components/ChatBot"));
 const DropzoneComponent = lazy(() => import("./Components/DropzoneComponent"));
 const Weather = lazy(() => import("./Components/Weather/Weather"));
 const ImageConverter = lazy(() => import("./Components/ImageConverter"));
-const ImageEnhancer = lazy(() => import("./Components/ImageEnhancer"));
+// const ImageEnhancer = lazy(() => import("./Components/ImageEnhancer"));
 const PasswordGenerator = lazy(() => import("./Components/PasswordGenerator"));
 
 const routesArray = [
