@@ -29,6 +29,7 @@ export default function PasswordGenerator() {
 
   const copyToClipboard = () => {
     dismiss(); // Dismiss any existing toast notifications
+    if (!password) return toast.error("Nothing to copy", { theme: "dark" });
     navigator.clipboard.writeText(password);
     toast.success("Password copied !!!", { theme: "dark" });
   };

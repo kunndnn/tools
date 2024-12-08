@@ -3,6 +3,7 @@ import Footer from "./Footer";
 import { Links } from "../helpers/constants";
 import "../Styles/Nav.css";
 import { useState } from "react";
+import { ToggleTheme } from "./Common/ToggleTheme";
 
 const Layout = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -28,6 +29,7 @@ const Layout = () => {
             </li>
           ))}
         </ul>
+        <ToggleTheme/>
       </nav>
       <main>
         <Outlet />

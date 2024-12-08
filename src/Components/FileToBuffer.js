@@ -3,7 +3,7 @@ import Loader from "./Loader";
 import { ToastContainer, toast, Zoom } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import CopyToClipBoard from "./Common/CopyToClipBoard";
-
+import "../Styles/FileToBuffer.css";
 function FileToBuffer() {
   const [loading, setLoading] = useState(false);
   const [output, setOutput] = useState(""); // State to hold the output base64 string
@@ -96,76 +96,24 @@ function FileToBuffer() {
     }
   };
 
-  // Inline styles for elements
-  const containerStyle = {
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    justifyContent: "center",
-    height: "80vh", // Adjust height to fit within the viewport responsively
-    width: "90vw", // Ensure responsiveness for smaller devices
-    maxWidth: "600px", // Max width for larger screens
-    margin: "auto",
-    padding: "20px",
-    backgroundColor: "#f0f0f0",
-    borderRadius: "15px",
-    boxShadow: "10px 10px 30px rgba(0, 0, 0, 0.2)", // 3D shadow effect
-    transform: "rotateX(5deg) rotateY(5deg)", // Slight 3D tilt effect
-    perspective: "1000px", // Gives a 3D feel
-    overflowY: "auto", // Enables vertical scrolling when content exceeds the container's height
-    maxHeight: "80vh", // Limit the max height to 80% of the viewport height
-  };
-
-  const buttonStyle = {
-    padding: "10px 20px",
-    backgroundColor: "#4CAF50",
-    color: "white",
-    border: "none",
-    borderRadius: "5px",
-    cursor: "pointer",
-    margin: "10px",
-    whiteSpace: "nowrap", // Prevent text wrapping
-  };
-
-  const fileInputStyle = {
-    marginBottom: "20px",
-  };
-
-  const textAreaStyle = {
-    width: "100%",
-    padding: "10px",
-    fontSize: "16px",
-    borderRadius: "5px",
-    resize: "none", // Disable resize
-  };
-
-  const headingStyle = {
-    margin: "20px 0",
-  };
-
   return (
     <>
-      <div style={containerStyle}>
-        <input type="file" ref={fileInputRef} style={fileInputStyle} />
-        <button style={buttonStyle} onClick={convertFile}>
-          Convert to Base64
-        </button>
+      <div className="container">
+        <input type="file" ref={fileInputRef} />
+        <button onClick={convertFile}>Convert to Base64</button>
 
-        <h2 style={headingStyle}>Output</h2>
-        <textarea value={output} rows="10" style={textAreaStyle} readOnly />
-        <CopyToClipBoard textToCopy={output} style={buttonStyle} />
+        <h2>Output</h2>
+        <textarea value={output} rows="10" readOnly />
+        <CopyToClipBoard textToCopy={output} />
 
-        <h2 style={headingStyle}>Convert Buffer to File</h2>
+        <h2>Convert Buffer to File</h2>
         <textarea
           value={bufferInput}
           onChange={handleBufferInputChange}
           rows="10"
-          style={textAreaStyle}
           placeholder="Paste base64 data here"
         />
-        <button style={buttonStyle} onClick={convertBufferToFile}>
-          Convert Buffer to File
-        </button>
+        <button onClick={convertBufferToFile}>Convert Buffer to File</button>
       </div>
       <Loader loading={loading} />
       <ToastContainer

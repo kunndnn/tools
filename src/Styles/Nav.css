@@ -1,6 +1,6 @@
 /* General Navbar Styles */
 .navbar {
-    background-color: #007bff;
+    background-color: #b0c5dc;
     color: #fff;
     padding: 10px 20px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -16,7 +16,7 @@
   }
   
   .navbar-toggle {
-    background-color: #0056b3;
+    background-color: #6292c5;
     color: #fff;
     border: none;
     padding: 8px 16px;
@@ -27,7 +27,7 @@
   }
   
   .navbar-toggle:hover {
-    background-color: #003d80;
+    background-color: #0b2f55;
   }
   
   /* Navbar Menu */

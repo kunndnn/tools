@@ -11,3 +11,27 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+/* Default styles for light theme */
+body.light {
+  --background-color: #ffffff;
+  --text-color: #0b0b0b;
+  --primary-color: #007bff;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  &  .container {
+    background-color: #00adb5;
+}
+}
+
+/* Styles for dark theme */
+body.dark {
+  --background-color: #2e2c2c;
+  --text-color: #ffff;
+  --primary-color: #bb86fc;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  & .container {
+    background-color: rgb(67, 154, 151);
+}
+}
+
