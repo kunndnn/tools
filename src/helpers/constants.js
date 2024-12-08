@@ -35,9 +35,13 @@ const Links = [
     list: "/image-converter",
     name: "Image converter",
   },
+  // {
+  //   list: "/image-enhancer",
+  //   name: "Image Enhancer",
+  // },
   {
-    list: "/image-enhancer",
-    name: "Image Enhancer",
+    list: "password-generator",
+    name: "Password Generator",
   },
 ]; // routers
 

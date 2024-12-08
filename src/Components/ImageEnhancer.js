@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Upscaler from "upscaler";
-import "../Styles/ImageEnhancer.css"; // Add external CSS for styling
+import "../Styles/ImageEnhancer.css";
 
 const ImageEnhancer = () => {
   const [inputImage, setInputImage] = useState(null);
@@ -21,23 +21,36 @@ const ImageEnhancer = () => {
 
     setIsProcessing(true);
     const upscaler = new Upscaler();
+
     const img = new Image();
     img.src = inputImage;
 
     img.onload = async () => {
       try {
+        // Enhance the image using Upscaler
         const enhancedImage = await upscaler.upscale(img);
+
+        // Draw enhanced image onto a canvas
         const canvas = document.createElement("canvas");
         canvas.width = enhancedImage.width;
         canvas.height = enhancedImage.height;
+
         const ctx = canvas.getContext("2d");
-        ctx.drawImage(enhancedImage, 0, 0);
-        setOutputImage(canvas.toDataURL()); // Set the enhanced image as output
+        ctx.drawImage(enhancedImage, 0, 0, enhancedImage.width, enhancedImage.height);
+
+        // Extract base64 URL of enhanced image
+        const enhancedDataURL = canvas.toDataURL("image/png");
+        setOutputImage(enhancedDataURL); // Set the enhanced image as output
       } catch (error) {
         console.error("Image enhancement failed:", error);
       } finally {
         setIsProcessing(false);
       }
+    };
+
+    img.onerror = () => {
+      console.error("Failed to load image");
+      setIsProcessing(false);
     };
   };
 

@@ -15,6 +15,7 @@ const DropzoneComponent = lazy(() => import("./Components/DropzoneComponent"));
 const Weather = lazy(() => import("./Components/Weather/Weather"));
 const ImageConverter = lazy(() => import("./Components/ImageConverter"));
 const ImageEnhancer = lazy(() => import("./Components/ImageEnhancer"));
+const PasswordGenerator = lazy(() => import("./Components/PasswordGenerator"));
 
 const routesArray = [
   {
@@ -53,9 +54,13 @@ const routesArray = [
     path: "/image-converter",
     component: <ImageConverter />,
   },
+  // {
+  //   path: "/image-enhancer",
+  //   component: <ImageEnhancer />,
+  // },
   {
-    path: "/image-enhancer",
-    component: <ImageEnhancer />,
+    path: "/password-generator",
+    component: <PasswordGenerator />,
   },
 ];
 

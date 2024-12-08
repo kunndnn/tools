@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from "react";
 import Card from "./Card";
 import "./style.css";
+import { ToastContainer, toast, Zoom } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const { REACT_APP_WEATHER_KEY } = process.env;
 const Weather = () => {
   const [searchValue, setSearchValue] = useState("chandigarh");
   const [tempInfo, setTempInfo] = useState({});
   const [city, setCity] = useState("");
+  const { dismiss } = toast;
 
   const getCityName = async (latitude, longitude) => {
     try {
@@ -18,6 +21,7 @@ const Weather = () => {
     }
   };
   const getWeatherInfo = async () => {
+    dismiss(); // Dismiss any existing toast notifications
     try {
       let url = ` https://api.openweathermap.org/data/2.5/weather?q=${searchValue}&units=metric&appid=${REACT_APP_WEATHER_KEY}`;
       const res = await fetch(url);
@@ -40,8 +44,9 @@ const Weather = () => {
       };
       setTempInfo(myNewWeather);
     } catch (error) {
-      console.log({ error });
-      alert("An error Occured");
+      // console.log({ error });
+      toast.error("An error Occured", { theme: "dark" });
+
     }
   };
 
@@ -92,6 +97,19 @@ const Weather = () => {
         </div>
         <Card tempInfo={tempInfo} />
       </div>
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+        transition={Zoom}
+      />
     </>
   );
 };
