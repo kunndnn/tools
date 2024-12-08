@@ -43,6 +43,10 @@ const Links = [
     list: "password-generator",
     name: "Password Generator",
   },
+  // {
+  //   list: "quote",
+  //   name: "Motivational Quote",
+  // },
 ]; // routers
 
 export { Links };

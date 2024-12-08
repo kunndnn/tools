@@ -17,6 +17,7 @@ const Weather = lazy(() => import("./Components/Weather/Weather"));
 const ImageConverter = lazy(() => import("./Components/ImageConverter"));
 // const ImageEnhancer = lazy(() => import("./Components/ImageEnhancer"));
 const PasswordGenerator = lazy(() => import("./Components/PasswordGenerator"));
+// const Quote = lazy(() => import("./Components/Quote"));
 
 const routesArray = [
   {
@@ -63,6 +64,10 @@ const routesArray = [
     path: "/password-generator",
     component: <PasswordGenerator />,
   },
+  // {
+  //   path: "/quote",
+  //   component: <Quote />,
+  // },
 ];
 
 const routes = routesArray.map(({ path, component }) => (
