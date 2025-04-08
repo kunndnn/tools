@@ -56,7 +56,7 @@ export const sortByKey = (array, key) =>
 
 export const isEven = (num) => num % 2 === 0;
 
-export const genereteUUID = () =>
+export const generateUUID = () =>
   "xxxxxxxxxxxx4xxxyxxxxxxxxxxxxxxx".replace(/[xy]/g, (c) =>
     ((Math.random() * 16) | 0).toString(16)
   );
