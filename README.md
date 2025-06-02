@@ -68,10 +68,11 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
 # tools
 
+---
 
-*************************************************************************************
 <h2>🚀 Deployment to GitHub Pages</h2>
 
 <p>This project uses <a href="https://pages.github.com/" target="_blank">GitHub Pages</a> for deployment.</p>
@@ -113,3 +114,5 @@ npm run deploy
 
 <pre><code>https://&lt;your-username&gt;.github.io/&lt;your-repo-name&gt;/
 </code></pre>
+
+<p>To edit first add the route in ./src/Components/helpers/constants.js file & ./src/Router.js and then make compoment and import in Router.js</p>

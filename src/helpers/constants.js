@@ -47,6 +47,18 @@ const Links = [
   //   list: "quote",
   //   name: "Motivational Quote",
   // },
+  {
+    list: "markdown-editor",
+    name: "Markdown Editor",
+  },
+  {
+    list: "text-to-image",
+    name: "Text to Image",
+  },
+  {
+    list: "chat-bot",
+    name: "Chat bot",
+  },
 ]; // routers
 
 export { Links };

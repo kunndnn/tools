@@ -11,14 +11,15 @@ const BarCodeGenerator = lazy(() => import("./Components/BarCodeGenerator"));
 const QRCodeGenerator = lazy(() => import("./Components/QRCodeGenerator"));
 const TextToSpeech = lazy(() => import("./Components/TextToSpeech"));
 const LiveCamera = lazy(() => import("./Components/LiveCamera"));
-// const ChatBot = lazy(() => import("./Components/ChatBot"));
+const ChatBot = lazy(() => import("./Components/ChatBot"));
 const DropzoneComponent = lazy(() => import("./Components/DropzoneComponent"));
 const Weather = lazy(() => import("./Components/Weather/Weather"));
 const ImageConverter = lazy(() => import("./Components/ImageConverter"));
 // const ImageEnhancer = lazy(() => import("./Components/ImageEnhancer"));
 const PasswordGenerator = lazy(() => import("./Components/PasswordGenerator"));
 // const Quote = lazy(() => import("./Components/Quote"));
-
+const MarkdownPreviewer = lazy(() => import("./Components/Markdown"));
+const TexttoImage = lazy(() => import("./Components/TexttoImage"));
 const routesArray = [
   {
     path: "/loader",
@@ -66,13 +67,26 @@ const routesArray = [
   },
   // {
   //   path: "/quote",
-  //   component: <Quote />,
+  // component: <Quote />,
   // },
+  {
+    pathL: "/markdown-editor",
+    component: <MarkdownPreviewer />,
+  },
+  {
+    path: "text-to-image",
+    component: <TexttoImage />,
+  },
+  {
+    path: "chat-bot",
+    component: <ChatBot />,
+  },
 ];
 
 const routes = routesArray.map(({ path, component }) => (
   <Route
     path={path}
+    key={Date.now().toString()}
     element={<Suspense fallback={<Loading />}>{component}</Suspense>}
   />
 ));
@@ -85,13 +99,13 @@ function Router() {
           {/* all the routes  */}
           {routes}
           {/* <Route
-              path="/chat-bot"
-              element={
-                <Suspense fallback={<Loading/>}>
-                  <ChatBot />
-                </Suspense>
-              }
-            /> */}
+            path="/chat-bot"
+            element={
+              <Suspense fallback={<Loading />}>
+                <ChatBot />
+              </Suspense>
+            }
+          /> */}
           <Route path="*" element={<NoPage />} />
         </Route>
       </Routes>
