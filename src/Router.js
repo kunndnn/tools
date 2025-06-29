@@ -2,24 +2,26 @@
 import { HashRouter, Routes, Route } from "react-router-dom";
 import Layout from "./Components/Layout";
 import NoPage from "./Components/NoPage";
-import React, { Suspense, lazy } from "react";
+import { Suspense, lazy } from "react";
 
 const Loading = () => <div>Loading ...</div>;
-const Loader = lazy(() => import("./Components/Loader"));
-const FileToBuffer = lazy(() => import("./Components/FileToBuffer"));
-const BarCodeGenerator = lazy(() => import("./Components/BarCodeGenerator"));
-const QRCodeGenerator = lazy(() => import("./Components/QRCodeGenerator"));
-const TextToSpeech = lazy(() => import("./Components/TextToSpeech"));
-const LiveCamera = lazy(() => import("./Components/LiveCamera"));
-const ChatBot = lazy(() => import("./Components/ChatBot"));
-const DropzoneComponent = lazy(() => import("./Components/DropzoneComponent"));
-const Weather = lazy(() => import("./Components/Weather/Weather"));
-const ImageConverter = lazy(() => import("./Components/ImageConverter"));
-// const ImageEnhancer = lazy(() => import("./Components/ImageEnhancer"));
-const PasswordGenerator = lazy(() => import("./Components/PasswordGenerator"));
-// const Quote = lazy(() => import("./Components/Quote"));
-const MarkdownPreviewer = lazy(() => import("./Components/Markdown"));
-const TexttoImage = lazy(() => import("./Components/TexttoImage"));
+const Loader = lazy(() => import("./Components/Loader")),
+  FileToBuffer = lazy(() => import("./Components/FileToBuffer")),
+  BarCodeGenerator = lazy(() => import("./Components/BarCodeGenerator")),
+  QRCodeGenerator = lazy(() => import("./Components/QRCodeGenerator")),
+  TextToSpeech = lazy(() => import("./Components/TextToSpeech")),
+  LiveCamera = lazy(() => import("./Components/LiveCamera")),
+  ChatBot = lazy(() => import("./Components/ChatBot")),
+  DropzoneComponent = lazy(() => import("./Components/DropzoneComponent")),
+  Weather = lazy(() => import("./Components/Weather/Weather")),
+  ImageConverter = lazy(() => import("./Components/ImageConverter")),
+  //  ImageEnhancer = lazy(() => import("./Components/ImageEnhancer")),
+  PasswordGenerator = lazy(() => import("./Components/PasswordGenerator")),
+  //  Quote = lazy(() => import("./Components/Quote")),
+  MarkdownPreviewer = lazy(() => import("./Components/Markdown")),
+  TexttoImage = lazy(() => import("./Components/TexttoImage")),
+  // SMTP = lazy(() => import("./Components/SMTP")),
+  HTMLViewer = lazy(() => import("./Components/HTMLViewer"));
 const routesArray = [
   {
     path: "/loader",
@@ -80,6 +82,14 @@ const routesArray = [
   {
     path: "chat-bot",
     component: <ChatBot />,
+  },
+  // {
+  //   path: "smtp-test",
+  //   component: <SMTP />,
+  // },
+  {
+    path: "html-viewer",
+    component: <HTMLViewer />,
   },
 ];
 

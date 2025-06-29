@@ -59,6 +59,14 @@ const Links = [
     list: "chat-bot",
     name: "Chat bot",
   },
+  // {
+  //   list: "smtp-test",
+  //   name: "SMTP Test",
+  // },
+  {
+    list: "html-viewer",
+    name: "HTML Viewer",
+  },
 ]; // routers
 
 export { Links };
