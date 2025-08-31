@@ -1,4 +1,4 @@
-import { Outlet, Link } from "react-router-dom";
+import { Outlet, Link, useNavigate } from "react-router-dom";
 import Footer from "./Footer";
 import { Links } from "../helpers/constants";
 import "../Styles/Nav.css";
@@ -8,6 +8,7 @@ import { ToggleTheme } from "./Common/ToggleTheme";
 const Layout = () => {
   const [isOpen, setIsOpen] = useState(false);
 
+  const navigate = useNavigate();
   const toggleNavbar = () => {
     setIsOpen(!isOpen);
   };
@@ -20,7 +21,7 @@ const Layout = () => {
             {isOpen ? "Close" : "Menu"}
           </button>
         </div>
-        <ul className={`navbar-menu ${isOpen ? "open" : ""}`}>
+        {/* <ul className={`navbar-menu ${isOpen ? "open" : ""}`}>
           {Links.map(({ list, name }) => (
             <li key={list}>
               <Link to={list} onClick={() => setIsOpen(false)}>
@@ -28,8 +29,13 @@ const Layout = () => {
               </Link>
             </li>
           ))}
-        </ul>
-        <ToggleTheme/>
+        </ul> */}
+        <div className="nav-actions">
+          <ToggleTheme />
+          <button className="back-btn" onClick={() => navigate(-1)}>
+            ⬅ Back
+          </button>
+        </div>
       </nav>
       <main>
         <Outlet />

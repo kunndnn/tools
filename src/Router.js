@@ -21,11 +21,17 @@ const Loader = lazy(() => import("./Components/Loader")),
   MarkdownPreviewer = lazy(() => import("./Components/Markdown")),
   TexttoImage = lazy(() => import("./Components/TexttoImage")),
   // SMTP = lazy(() => import("./Components/SMTP")),
+  Home = lazy(() => import("./Components/Home")),
+  SpeechToText = lazy(() => import("./Components/SpeechToText")),
   HTMLViewer = lazy(() => import("./Components/HTMLViewer"));
 const routesArray = [
   {
     path: "/loader",
     component: <Loader />,
+  },
+  {
+    path: "/",
+    component: <Home />,
   },
   {
     path: "/file-to-buffer",
@@ -87,6 +93,10 @@ const routesArray = [
   //   path: "smtp-test",
   //   component: <SMTP />,
   // },
+  {
+    path: "speech-to-text",
+    component: <SpeechToText />,
+  },
   {
     path: "html-viewer",
     component: <HTMLViewer />,
