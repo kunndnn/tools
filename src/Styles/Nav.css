@@ -81,15 +81,15 @@
   border: none;
   color: white;
   padding: 8px 16px;
-  margin-left: 1rem;
+  margin: 0 1rem;
   border-radius: 6px;
   font-size: 0.95rem;
   cursor: pointer;
   transition: background-color 0.2s ease, transform 0.2s ease;
 }
 
-.back-btn:hover {
-  background-color: #0056b3;
+.back-btn:hover,
+.github:hover {
   transform: translateY(-2px);
 }
 
@@ -98,7 +98,21 @@
   background-color: #004080;
 }
 
-.nav-actions{
+.nav-actions {
   display: flex;
   justify-content: space-between;
+}
+
+a.github {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #000;
+  color: white;
+  padding: 8px 10px;
+  margin: 0 0.25rem;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  text-decoration: none; /* remove underline */
+  transition: background-color 0.2s ease, transform 0.2s ease;
 }
