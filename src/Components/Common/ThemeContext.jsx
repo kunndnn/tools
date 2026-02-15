@@ -15,7 +15,7 @@ const ThemeProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    document.body.className = theme;
+    document.documentElement.className = theme;
   }, [theme]);
 
   return (

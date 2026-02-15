@@ -8,7 +8,7 @@ export const ToggleTheme = () => {
   return (
     <button
       onClick={toggleTheme}
-      className="relative w-14 h-7 rounded-full bg-white/5 border border-white/10 p-1 flex items-center transition-all duration-300 hover:border-primary/50 group overflow-hidden cursor-pointer"
+      className="relative w-14 h-7 rounded-full glass p-1 flex items-center transition-all duration-300 hover:border-primary/50 group overflow-hidden cursor-pointer"
       aria-label="Toggle Theme"
     >
       <div
