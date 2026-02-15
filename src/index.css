@@ -1,37 +1,45 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #3b82f6;
+  --color-secondary: #6366f1;
+  --color-accent: #10b981;
+  --color-background-light: #f8fafc;
+  --color-background-dark: #0f172a;
+  --color-text-light: #1e293b;
+  --color-text-dark: #f1f5f9;
+  
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
-/* Default styles for light theme */
-body.light {
-  --background-color: #ffffff;
-  --text-color: #0b0b0b;
-  --primary-color: #007bff;
-  background-color: var(--background-color);
-  color: var(--text-color);
-  &  .container {
-    background-color: #00adb5;
-}
+@layer base {
+  body {
+    @apply m-0 transition-colors duration-300;
+    font-family: var(--font-sans);
+  }
+
+  /* Default styles for light theme */
+  body.light {
+    --background-color: var(--color-background-light);
+    --text-color: var(--color-text-light);
+    --primary-color: var(--color-primary);
+    background-color: var(--background-color);
+    color: var(--text-color);
+  }
+
+  /* Styles for dark theme */
+  body.dark {
+    --background-color: var(--color-background-dark);
+    --text-color: var(--color-text-dark);
+    --primary-color: var(--color-secondary);
+    background-color: var(--background-color);
+    color: var(--text-color);
+  }
 }
 
-/* Styles for dark theme */
-body.dark {
-  --background-color: #2e2c2c;
-  --text-color: #ffff;
-  --primary-color: #bb86fc;
-  background-color: var(--background-color);
-  color: var(--text-color);
-  & .container {
-    background-color: #7fbcee;
-}
+@layer utilities {
+  .glass {
+    @apply bg-white/10 backdrop-blur-md border border-white/20 shadow-xl;
+  }
 }
 
