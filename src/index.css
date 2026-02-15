@@ -1,45 +1,84 @@
 @import "tailwindcss";
 
 @theme {
+  /* Brand Colors */
   --color-primary: #3b82f6;
   --color-secondary: #6366f1;
   --color-accent: #10b981;
-  --color-background-light: #f8fafc;
-  --color-background-dark: #0f172a;
-  --color-text-light: #1e293b;
-  --color-text-dark: #f1f5f9;
-  
+  /* Semantic Theme Colors */
+    --color-background: var(--bg-color);
+    --color-foreground: var(--text-color);
+    --color-muted-foreground: var(--muted-text);
+    --color-glass-bg: var(--glass-bg);
+    --color-glass-border: var(--glass-border);
   --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  /* Animations */
+    --animate-float: float 3s ease-in-out infinite;
+  
+    @keyframes float {
+  
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+  
+      50% {
+        transform: translateY(-10px);
+      }
+    }
 }
 
 @layer base {
+  :root {
+      --bg-color: #f8fafc;
+      --text-color: #1e293b;
+      --muted-text: #64748b;
+      --glass-bg: rgba(255, 255, 255, 0.7);
+      --glass-border: rgba(0, 0, 0, 0.1);
+    }
+  
+    .dark {
+      --bg-color: #0d1117;
+      --text-color: #f0f6fc;
+      --muted-text: #8b949e;
+      --glass-bg: rgba(22, 27, 34, 0.7);
+      --glass-border: rgba(255, 255, 255, 0.1);
+    }
   body {
-    @apply m-0 transition-colors duration-300;
+    @apply m-0 text-foreground bg-background transition-colors duration-500 ease-in-out;
     font-family: var(--font-sans);
   }
 
-  /* Default styles for light theme */
-  body.light {
-    --background-color: var(--color-background-light);
-    --text-color: var(--color-text-light);
-    --primary-color: var(--color-primary);
-    background-color: var(--background-color);
-    color: var(--text-color);
-  }
-
-  /* Styles for dark theme */
-  body.dark {
-    --background-color: var(--color-background-dark);
-    --text-color: var(--color-text-dark);
-    --primary-color: var(--color-secondary);
-    background-color: var(--background-color);
-    color: var(--text-color);
+    /* Target specific elements for smooth transitions */
+    main,
+    nav,
+    footer,
+    .glass,
+    button,
+    input,
+        textarea,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        p,
+        span,
+        a,
+        i,
+        svg {
+          @apply transition-colors duration-500 ease-in-out;
   }
 }
 
 @layer utilities {
   .glass {
-    @apply bg-white/10 backdrop-blur-md border border-white/20 shadow-xl;
+    @apply bg-glass-bg backdrop-blur-xl border border-glass-border shadow-2xl;
+    }
+    
+    .animate-float {
+      animation: var(--animate-float);
   }
 }
 

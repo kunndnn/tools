@@ -106,7 +106,7 @@ const routesArray = [
 const routes = routesArray.map(({ path, component }) => (
   <Route
     path={path}
-    key={Date.now().toString()}
+    key={path}
     element={<Suspense fallback={<Loading />}>{component}</Suspense>}
   />
 ));

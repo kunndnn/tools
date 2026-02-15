@@ -24,15 +24,15 @@ const Layout = () => {
   ];
 
   return (
-    <div className="min-h-screen flex flex-col bg-background text-foreground transition-colors duration-300">
-      <nav className="sticky top-0 z-50 glass px-6 py-4 flex items-center justify-between border-b border-white/10">
+    <div className="min-h-screen flex flex-col bg-background text-foreground transition-colors duration-500">
+      <nav className="sticky top-0 z-50 glass px-6 py-4 flex items-center justify-between">
         <div className="flex items-center gap-4">
           <Link to="/" className="text-xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent hover:opacity-80 transition-opacity">
             ToolsHub
           </Link>
           {location.pathname !== "/" && (
             <button 
-              className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white/5 hover:bg-white/10 transition-colors text-sm font-medium border border-white/10"
+              className="flex items-center gap-2 px-3 py-1.5 rounded-lg glass hover:bg-white/10 transition-colors text-sm font-medium"
               onClick={() => navigate(-1)}
             >
               <ArrowLeft size={16} />
@@ -51,7 +51,7 @@ const Layout = () => {
                 rel="noopener noreferrer"
                 aria-label={label}
                 title={label}
-                className="p-2 rounded-full hover:bg-white/5 transition-colors text-muted-foreground hover:text-primary"
+                className="p-2 rounded-full hover:bg-glass-bg transition-colors text-muted-foreground hover:text-primary"
               >
                 <Icon size={20} />
               </a>
@@ -62,9 +62,7 @@ const Layout = () => {
       </nav>
 
       <main className="flex-grow">
-        <div className="animate-in fade-in duration-500">
-          <Outlet />
-        </div>
+        <Outlet />
       </main>
 
       <Footer />
