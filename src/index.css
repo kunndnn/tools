@@ -1,48 +1,68 @@
 @import "tailwindcss";
 
 @theme {
-  /* Brand Colors */
-  --color-primary: #3b82f6;
-  --color-secondary: #6366f1;
-  --color-accent: #10b981;
+  /* Halloween Brand Colors */
+    --color-primary: #ff7a00;
+    /* Spooky Orange */
+    --color-secondary: #9d50bb;
+    /* Eerie Purple */
+    --color-accent: #39ff14;
+    /* Slime Green */
   /* Semantic Theme Colors */
-    --color-background: var(--bg-color);
+  --color-background: var(--bg-color);
     --color-foreground: var(--text-color);
     --color-muted-foreground: var(--muted-text);
     --color-glass-bg: var(--glass-bg);
     --color-glass-border: var(--glass-border);
+
   --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  
   /* Animations */
-    --animate-float: float 3s ease-in-out infinite;
+  --animate-float: float 3s ease-in-out infinite;
+  --animate-gradient: gradient 5s linear infinite;
   
-    @keyframes float {
-  
-      0%,
+  @keyframes float {
+    0%,
       100% {
         transform: translateY(0);
       }
-  
+    
       50% {
         transform: translateY(-10px);
       }
     }
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
 }
 
 @layer base {
   :root {
-      --bg-color: #f8fafc;
+    --bg-color: #f8fafc;
       --text-color: #1e293b;
       --muted-text: #64748b;
       --glass-bg: rgba(255, 255, 255, 0.7);
       --glass-border: rgba(0, 0, 0, 0.1);
     }
-  
+    
     .dark {
-      --bg-color: #0d1117;
-      --text-color: #f0f6fc;
-      --muted-text: #8b949e;
-      --glass-bg: rgba(22, 27, 34, 0.7);
-      --glass-border: rgba(255, 255, 255, 0.1);
+    --bg-color: #050505;
+      /* Deep Spooky Black */
+      --text-color: #f0f0f0;
+      --muted-text: #a0a0a0;
+      --glass-bg: rgba(15, 15, 20, 0.8);
+      --glass-border: rgba(255, 122, 0, 0.2);
+      /* Orange tinted border */
     }
   body {
     @apply m-0 text-foreground bg-background transition-colors duration-500 ease-in-out;

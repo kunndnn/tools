@@ -8,16 +8,19 @@ const TextToImage = () => {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
 
+  const [error, setError] = useState("");
+
   const generateImage = async (e) => {
     e.preventDefault();
     if (!apiKey || !prompt) return;
 
     setLoading(true);
     setImageSrc("");
+    setError("");
 
     try {
       const response = await fetch(
-        `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-preview-image-generation:generateContent?key=${apiKey}`,
+        `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`,
         {
           method: "POST",
           headers: {
@@ -41,16 +44,22 @@ const TextToImage = () => {
       );
 
       const json = await response.json();
+
+      if (!response.ok) {
+        throw new Error(json.error?.message || "Failed to generate image");
+      }
+
       const parts = json?.candidates?.[0]?.content?.parts || [];
       const imageData = parts.find((p) => p.inlineData?.data)?.inlineData?.data;
 
       if (imageData) {
         setImageSrc(`data:image/png;base64,${imageData}`);
       } else {
-        console.error("Image generation failed:", json);
+        throw new Error("No image data received from API");
       }
     } catch (err) {
       console.error("Error:", err);
+      setError(err.message);
     } finally {
       setLoading(false);
     }
@@ -62,6 +71,13 @@ const TextToImage = () => {
     link.href = imageSrc;
     link.download = "generated-ai-art.png";
     link.click();
+  };
+
+  const onKeySubmit = (e) => {
+    e.preventDefault();
+    if (apiKey.trim()) {
+      setSubmitted(true);
+    }
   };
 
   return (
@@ -86,7 +102,7 @@ const TextToImage = () => {
               <h3 className="text-xl font-bold">Configure API Access</h3>
               <p className="text-sm text-muted-foreground">To use the image generator, please enter your Google Gemini API key.</p>
             </div>
-            <form onSubmit={() => setSubmitted(true)} className="space-y-4">
+            <form onSubmit={onKeySubmit} className="space-y-4">
               <input
                 type="password"
                 value={apiKey}
@@ -105,6 +121,11 @@ const TextToImage = () => {
           </div>
         ) : (
           <div className="space-y-8">
+              {error && (
+                <div className="p-4 bg-red-500/10 border border-red-500/20 rounded-2xl text-red-500 text-sm text-center font-medium animate-in slide-in-from-top-2">
+                  ⚠️ {error}
+                </div>
+              )}
             <form onSubmit={generateImage} className="relative group">
               <textarea
                 value={prompt}

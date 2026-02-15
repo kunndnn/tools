@@ -12,16 +12,25 @@ function ChatBot() {
   const inputRef = useRef(null);
   const textAreaRef = useRef(null);
 
-  const generateResponse = async (prompt) => {
+  const [error, setError] = useState("");
+
+  const generateResponse = async (userPrompt) => {
     try {
       const genAI = new GoogleGenerativeAI(apiKey);
+
+      // Use 'gemini-1.5-flash' for maximum compatibility 
+      // or 'gemini-2.0-flash' if your tier supports the latest stable release
       const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
-      const result = await model.generateContent(prompt);
+
+      const result = await model.generateContent(userPrompt);
       const response = await result.response;
-      return response.text();
+      const text = response.text();
+
+      return text;
     } catch (error) {
-      console.error(error);
-      return "Error: Could not fetch response. Please check your API key.";
+      // This logs the specific reason (like invalid API key or model mismatch)
+      console.error("Gemini API Error details:", error);
+      throw error;
     }
   };
 
@@ -33,10 +42,16 @@ function ChatBot() {
   const fetchResult = async () => {
     if (!prompt.trim()) return;
     setLoading(true);
-    const result = await generateResponse(prompt);
-    setLoading(false);
-    if (textAreaRef.current) {
-      textAreaRef.current.value = result;
+    setError("");
+    try {
+      const result = await generateResponse(prompt);
+      if (textAreaRef.current) {
+        textAreaRef.current.value = result;
+      }
+    } catch (err) {
+      setError(err.message || "Failed to fetch response. Please check your API key.");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -86,8 +101,8 @@ function ChatBot() {
                 onChange={(e) => setApiKey(e.target.value)}
                 className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 focus:border-primary/50 focus:ring-2 focus:ring-primary/20 outline-none transition-all text-center"
               />
-              <button 
-                type="submit" 
+              <button
+                type="submit"
                 className="w-full py-3 bg-primary text-white font-semibold rounded-xl hover:opacity-90 transition-all active:scale-[0.98]"
               >
                 Continue to Chat
@@ -99,6 +114,22 @@ function ChatBot() {
           </form>
         ) : (
           <div className="space-y-6">
+            <div className="flex items-center justify-between">
+              <button
+                onClick={() => setIsKeySubmitted(false)}
+                className="text-xs text-primary hover:underline flex items-center gap-1"
+              >
+                <Key size={12} />
+                Reset API Key
+              </button>
+            </div>
+
+            {error && (
+              <div className="p-4 bg-red-500/10 border border-red-500/20 rounded-2xl text-red-500 text-sm text-center font-medium animate-in slide-in-from-top-2">
+                ⚠️ {error}
+              </div>
+            )}
+
             <div className="flex gap-2">
               <div className="relative flex-grow">
                 <input
@@ -112,7 +143,7 @@ function ChatBot() {
                 />
                 <MessageSquare className="absolute left-4 top-1/2 -translate-y-1/2 text-muted-foreground/50" size={20} />
               </div>
-              <button 
+              <button
                 onClick={fetchResult}
                 disabled={loading || !prompt.trim()}
                 className="px-6 rounded-2xl bg-gradient-to-r from-primary to-secondary text-white font-bold hover:shadow-lg hover:shadow-primary/20 transition-all disabled:opacity-50 disabled:grayscale flex items-center gap-2"

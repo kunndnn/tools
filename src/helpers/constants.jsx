@@ -44,16 +44,16 @@ const Links = [
     path: "/password-generator",
     desc: "Generate secure, random, and strong passwords.",
   },
-  {
-    name: "Text to Image",
-    path: "/text-to-image",
-    desc: "Turn text prompts into AI-generated images.",
-  },
-  {
-    name: "Chat Bot",
-    path: "/chat-bot",
-    desc: "Chat with an AI-powered assistant in real-time.",
-  },
+  // {
+  //   name: "Text to Image",
+  //   path: "/text-to-image",
+  //   desc: "Turn text prompts into AI-generated images.",
+  // },
+  // {
+  //   name: "Chat Bot",
+  //   path: "/chat-bot",
+  //   desc: "Chat with an AI-powered assistant in real-time.",
+  // },
   {
     name: "Speech to text",
     path: "/speech-to-text",

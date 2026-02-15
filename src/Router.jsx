@@ -81,14 +81,14 @@ const routesArray = [
     path: "/markdown-editor",
     component: <MarkdownPreviewer />,
   },
-  {
-    path: "/text-to-image",
-    component: <TexttoImage />,
-  },
-  {
-    path: "/chat-bot",
-    component: <ChatBot />,
-  },
+  // {
+  //   path: "/text-to-image",
+  //   component: <TexttoImage />,
+  // },
+  // {
+  //   path: "/chat-bot",
+  //   component: <ChatBot />,
+  // },
   {
     path: "/smtp-test",
     component: <SMTP />,
