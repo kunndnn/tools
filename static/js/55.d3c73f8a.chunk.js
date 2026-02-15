@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunktools=self.webpackChunktools||[]).push([[55],{3055:(e,s,n)=>{n.r(s),n.d(s,{default:()=>r});var l=n(579);const r=function(e){let{loading:s}=e;return(0,l.jsx)(l.Fragment,{children:s&&(0,l.jsx)("div",{id:"loader",children:(0,l.jsx)("div",{className:"spinner"})})})}}}]);
-//# sourceMappingURL=55.d3c73f8a.chunk.js.map
