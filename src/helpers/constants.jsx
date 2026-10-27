@@ -78,4 +78,8 @@ const Links = [
   // },
 ]; // routers
 
-export { Links };
+const DATA = {
+  buyMeACoffeeUrl: "https://buymeacoffee.com/kunndnn",
+};
+
+export { Links, DATA };
